@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <style>
+      /* Add some style to the duck image */
+      .duck {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      /* Animate the duck's wings */
+      .duck.flapping {
+        animation: flap 1s infinite;
+      }
+      
+      @keyframes flap {
+        0% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(30deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add the duck image to the page -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Yellow_duck_in_cotton_field.jpg/800px-Yellow_duck_in_cotton_field.jpg" class="duck" id="duck">
+
+    <script>
+      // Get a reference to the duck element
+      const duck = document.getElementById('duck');
+
+      // Add an event listener to the document to track the mouse position
+      document.addEventListener('mousemove', event => {
+        // Update the position of the duck to match the mouse position
+        duck.style.left = `${event.clientX}px`;
+        duck.style.top = `${event.clientY}px`;
+        
+        // Add the flapping class to the duck to animate its wings
+        duck.classList.add('flapping');
+        
+        // Remove the flapping class after a short delay
+        setTimeout(() => {
+          duck.classList.remove('flapping');
+        }, 200);
+      });
+    </script>
+  </body>
+</html>
